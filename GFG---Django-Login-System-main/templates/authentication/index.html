@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body 
+        {
+            background-image: url(" {% static 'img/back.png' %} ");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+        }
+        h1 
+        {
+            color: white;
+            font-size: 100px;
+            text-shadow: 10px 10px 20px #f73c3c;
+            margin-top: 175px;
+            text-align:center;
+        }
+.center {
+    width: 60%;
+    margin: auto;
+    animation-name: example;
+    animation-duration: 4s;
+    padding: 10px;
+}
+
+
+
+
+
+
+#log{  
+    width: 150px;  
+    height: 50px; 
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: rgb(245, 11, 11);  
+}  
+
+
+
+.container { 
+    height: 100px;
+    position: relative;
+    
+}
+
+.cen {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#front{
+    width: 60%;
+    margin: auto;
+    animation-name: example;
+    animation-duration: 4s;
+    padding: 10px;
+}
+strong{
+    color: white;
+    font-size: 40px;
+    text-shadow: 10px 10px 20px #4f09d1;
+    margin-top: 175px;
+    text-align:center;
+}
+
+    </style>
+</head>
+<body>
+<div>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert"  id="front">
+
+        <strong >Message: {{ message }}  </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aia-hidden="true">&times;</span>
+        </button>
+        
+    </div>
+    {% endfor %}
+</div>
+    <div class="center">
+    <h1 >Welcome to ABRS!</h1>
+</div>
+
+
+    {% if user.is_authenticated %}
+    <h3>Hello {{fname}}!</h3>
+    <h4>You're successfully logged in.</h4>
+    <button type="submit" class="btn btn-primary" id="log" name="log"><a href="/signout">SignOut</a></button>
+    {% else %}
+    
+    <div class="container">
+        <div class="cen">
+            <button type="submit" class="btn btn-primary" id="log" name="log"><a href="/signup">SignUp</a></button>
+        </div>
+    </div>
+    
+    
+    <br/>
+    <br/>
+    <div class="container">
+        <div class="cen">
+            <button type="submit" class="btn btn-primary" id="log" name="log"><a href="/signin">SignIn</a></button>
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup_style.css' %}"/>
+    <title>Sign Up</title>
+    <style>
+        body 
+        {
+            background-image: url(" {% static 'img/back.png' %} ");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+        }
+        h3
+        {
+            color: white;
+            font-size: 50px;
+            text-shadow: 10px 10px 20px #f73c3c;
+            margin-top: 50px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+
+    {% for message in messages %}
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+
+    <h3>Create your account!</h3>
+    <div class="login">
+    <form method="post" action="/signup">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Create A Username (use only letters and numbers)" Required>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name" Required>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name" Required>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email Address" Required>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <label for="pass1">Password</label>
+            <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Create Your Password" Required>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <label for="pass2">Confirm Password</label>
+            <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirm Your Password" Required>
+        </div>
+        <br><br>
+        <button type="submit" class="btn btn-primary" id="log" name="log">Sign Up</button>
+    </div>
+    </form>
+</body>
+</html>

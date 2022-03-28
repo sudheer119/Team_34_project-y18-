@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_style.css' %}"/>
+
+    <title>Sign In</title>
+    <style>
+        body 
+        {
+            background-image: url(" {% static 'img/back.png' %} ");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+        }
+        h3
+        {
+            color: white;
+            font-size: 50px;
+            text-shadow: 10px 10px 20px #f73c3c;
+            margin-top: 50px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div  class="btn btn-primary" id="log" name="log">
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+
+    </div>
+
+    <h3>Log In to your account!</h3>
+
+    <div class="login">
+    <form method="post" action="/signin" class="mb-2">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username" Required>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <label for="pass1">Password</label>
+            <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Enter Your Password" Required>
+        </div>
+        <br><br>
+        <div>
+        <button type="submit" class="btn btn-primary" id="log" name="log">Log In</button>
+        </div>
+
+        <br><br>    
+        <input type="checkbox" id="check">    
+        <span>Remember me</span>    
+        <br><br>    
+        Forgot Password
+    </form>
+</div>
+</body>
+</html>
